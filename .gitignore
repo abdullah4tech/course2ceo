@@ -32,3 +32,11 @@ dist-ssr
 
 # Supabase
 .supabase
+ADMIN_SETUP.md
+CREATE_ADMIN.md
+DATABASE_SETUP.md
+DATABASE_SETUP_FIXED.md
+MOCK_COURSES.md
+PROJECT_COMPLETE.md
+QUICK_SETUP.md
+admin-setup.sql
