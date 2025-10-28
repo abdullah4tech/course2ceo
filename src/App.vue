@@ -1,3 +1,96 @@
+<script setup>
+import { ref, h, shallowRef } from 'vue';
+
+
+const videoPlayer = ref(null);
+const showVideo = ref(false);
+const showBanner = ref(true);
+const showOverlay = ref(true);
+
+// Placeholder URLs - replace with your actual assets
+const videoBanner = ref('https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Video+Banner');
+const overviewVideo = ref('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
+
+// Icon components as render functions
+const ShieldIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' })
+    ])
+};
+
+const BookIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' })
+    ])
+};
+
+const ClockIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' })
+    ])
+};
+
+const PlayIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z' }),
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M21 12a9 9 0 11-18 0 9 9 0 0118 0z' })
+    ])
+};
+
+const UsersIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' })
+    ])
+};
+
+const CheckIcon = {
+    render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+    h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' })
+    ])
+};
+
+const features = shallowRef([
+    {
+        title: 'Business Strategy',
+        description: 'Proven frameworks to scale creative work into profitable businesses.',
+        icon: ShieldIcon
+    },
+    {
+        title: 'Expert Mentorship',
+        description: 'Learn from successful entrepreneurs who built million-dollar businesses.',
+        icon: BookIcon
+    },
+    {
+        title: 'Apply Immediately',
+        description: 'Learn and implement simultaneously. See real results as you progress.',
+        icon: ClockIcon
+    },
+    {
+        title: 'Real Case Studies',
+        description: 'Study actual business transformations and revenue strategies.',
+        icon: PlayIcon
+    },
+    {
+        title: 'CEO Network',
+        description: 'Connect with successful creator-entrepreneurs and industry leaders.',
+        icon: UsersIcon
+    },
+    {
+        title: 'Proven Results',
+        description: 'Join creators with 6-figure businesses and entrepreneurial freedom.',
+        icon: CheckIcon
+    }
+]);
+
+const stats = ref([
+    { label: 'Businesses', value: '1,200+' },
+    { label: 'Revenue', value: '$50M+' },
+    { label: 'CEOs', value: '500+' },
+    { label: 'Income', value: '340%' }
+])
+
+</script>
+
 <template>
   <div class="min-h-screen bg-white">
     <!-- Navigation -->
@@ -280,95 +373,3 @@
   </div>
 </template>
 
-<script>
-import { ref, h } from 'vue';
-
-export default {
-  name: 'LandingPage',
-  setup() {
-    const videoPlayer = ref(null);
-    const showVideo = ref(false);
-    const showBanner = ref(true);
-    const showOverlay = ref(true);
-    
-    // Placeholder URLs - replace with your actual assets
-    const videoBanner = ref('https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Video+Banner');
-    const overviewVideo = ref('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
-
-    // Icon components as render functions
-    const ShieldIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' })
-      ])
-    };
-
-    const BookIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' })
-      ])
-    };
-
-    const ClockIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' })
-      ])
-    };
-
-    const PlayIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z' }),
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M21 12a9 9 0 11-18 0 9 9 0 0118 0z' })
-      ])
-    };
-
-    const UsersIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' })
-      ])
-    };
-
-    const CheckIcon = {
-      render: () => h('svg', { class: 'h-5 w-5', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
-        h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' })
-      ])
-    };
-
-    const features = ref([
-      {
-        title: 'Business Strategy',
-        description: 'Proven frameworks to scale creative work into profitable businesses.',
-        icon: ShieldIcon
-      },
-      {
-        title: 'Expert Mentorship',
-        description: 'Learn from successful entrepreneurs who built million-dollar businesses.',
-        icon: BookIcon
-      },
-      {
-        title: 'Apply Immediately',
-        description: 'Learn and implement simultaneously. See real results as you progress.',
-        icon: ClockIcon
-      },
-      {
-        title: 'Real Case Studies',
-        description: 'Study actual business transformations and revenue strategies.',
-        icon: PlayIcon
-      },
-      {
-        title: 'CEO Network',
-        description: 'Connect with successful creator-entrepreneurs and industry leaders.',
-        icon: UsersIcon
-      },
-      {
-        title: 'Proven Results',
-        description: 'Join creators with 6-figure businesses and entrepreneurial freedom.',
-        icon: CheckIcon
-      }
-    ]);
-
-    const stats = ref([
-      { label: 'Businesses', value: '1,200+' },
-      { label: 'Revenue', value: '$50M+' },
-    ])
-  }}
-</script>
