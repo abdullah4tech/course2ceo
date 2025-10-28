@@ -1,6 +1,6 @@
 <script setup>
 import { ref, h, shallowRef } from 'vue';
-
+import VButton from './components/VButton.vue';
 
 const videoPlayer = ref(null);
 const showVideo = ref(false);
@@ -120,18 +120,19 @@ const stats = ref([
         </div>
         
         <div class="flex items-center gap-x-2 sm:gap-x-3">
-          <button 
+          <VButton 
+            variant="primary"
             @click="handleSignIn"
             class="hidden sm:inline-flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-50 px-3 py-2 text-sm lg:px-4 rounded-md font-medium transition-colors"
           >
             Sign In
-          </button>
-          <button 
+          </VButton>
+          <VButton 
             @click="handleSignIn"
             class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 shadow-sm text-sm lg:px-4 rounded-md font-medium transition-colors"
           >
             Start
-          </button>
+          </VButton>
         </div>
       </nav>
     </header>
@@ -153,7 +154,7 @@ const stats = ref([
             Transform your creative skills into a profitable business with expert-led courses.
           </p>
           <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <button 
+            <VButton 
               @click="handleSignIn"
               class="w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 shadow-lg rounded-md transition-colors"
             >
@@ -164,13 +165,13 @@ const stats = ref([
                 <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
               Get Started
-            </button>
-            <button 
+            </VButton>
+            <VButton 
               @click="handleSignIn"
               class="w-full sm:w-auto inline-flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-3 rounded-md transition-colors"
             >
               Sign In
-            </button>
+            </VButton>
           </div>
         </div>
         
@@ -244,6 +245,8 @@ const stats = ref([
       </div>
     </div>
 
+    <!-- <button class="relative inline-flex items-center bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 shadow-lg border-0 rounded-lg transition-colors duration-200">Hey</button> -->
+
     <!-- Stats Section -->
     <div id="stats" class="bg-white py-16 sm:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -279,7 +282,8 @@ const stats = ref([
               Transform your creative passion into a thriving business.
             </p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
-              <button 
+              <VButton 
+                variant="white"
                 @click="handleSignIn"
                 class="relative inline-flex items-center bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 shadow-lg border-0 rounded-lg transition-colors duration-200"
               >
@@ -290,7 +294,7 @@ const stats = ref([
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                 </svg>
                 <span class="text-blue-600">Get Started Today</span>
-              </button>
+              </VButton>
             </div>
             <p class="mt-6 text-sm text-blue-200">
               Secure authentication • Manual access verification • No credit card required

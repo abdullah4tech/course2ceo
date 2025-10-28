@@ -12,6 +12,25 @@ body {
   padding: 0;
 }
 
+/* Custom color variables - add these to your global CSS */
+:root {
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-500: #3b82f6;
+  
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-500: #22c55e;
+  
+  --color-warning-600: #ea580c;
+  --color-warning-700: #c2410c;
+  --color-warning-500: #f97316;
+  
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-500: #ef4444;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -47,3 +66,17 @@ body {
 .animate-slide-down {
   animation: slideDown 0.3s ease-out;
 }
+
+/* Tailwind utilities for animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+
+
