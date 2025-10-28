@@ -70,9 +70,9 @@ const attrs = useAttrs();
 
 // Button variant configurations (similar to CVA)
 const buttonVariants = {
-  base: 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-4 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+  base: 'inline-flex items-center justify-center cursor-pointer rounded-lg font-medium transition-colors focus:outline-none focus:ring-4 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
   variants: {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-slate-300',
+    primary: 'bg-primary-600 hover:bg-red-500 text-white focus:ring-slate-300',
     secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-slate-300',
     success: 'bg-success-600 text-white hover:bg-success-700 focus:ring-slate-300',
     warning: 'bg-warning-600 text-white hover:bg-warning-700 focus:ring-slate-300',
@@ -81,10 +81,10 @@ const buttonVariants = {
     ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-slate-300',
   },
   sizes: {
-    sm: 'h-8 px-3 text-sm',
-    md: 'h-10 px-4 text-sm',
-    lg: 'h-12 px-6 text-base',
-    xl: 'h-14 px-8 text-lg',
+    sm: 'h-8 px-4 text-sm',
+    md: 'h-10 px-5 text-sm',
+    lg: 'h-12 px-8 text-base',
+    xl: 'h-14 px-10 text-lg',
   }
 };
 

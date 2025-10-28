@@ -121,15 +121,17 @@ const stats = ref([
         
         <div class="flex items-center gap-x-2 sm:gap-x-3">
           <VButton 
-            variant="primary"
+            variant="outline"
+            size="sm"
             @click="handleSignIn"
-            class="hidden sm:inline-flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-50 px-3 py-2 text-sm lg:px-4 rounded-md font-medium transition-colors"
+            class="hidden sm:inline-flex items-center justify-center text-sm font-medium"
           >
             Sign In
           </VButton>
           <VButton 
+            size="sm"
             @click="handleSignIn"
-            class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 shadow-sm text-sm lg:px-4 rounded-md font-medium transition-colors"
+            class="inline-flex items-center justify-center text-sm font-medium"
           >
             Start
           </VButton>
@@ -156,7 +158,8 @@ const stats = ref([
           <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <VButton 
               @click="handleSignIn"
-              class="w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 shadow-lg rounded-md transition-colors"
+              size="lg"
+              class="w-full sm:w-auto inline-flex items-center justify-center text-white font-semibold shadow-lg"
             >
               <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -167,6 +170,7 @@ const stats = ref([
               Get Started
             </VButton>
             <VButton 
+              variant="outline"
               @click="handleSignIn"
               class="w-full sm:w-auto inline-flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-3 rounded-md transition-colors"
             >
@@ -283,7 +287,7 @@ const stats = ref([
             </p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
               <VButton 
-                variant="white"
+                variant=""
                 @click="handleSignIn"
                 class="relative inline-flex items-center bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 shadow-lg border-0 rounded-lg transition-colors duration-200"
               >

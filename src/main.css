@@ -14,9 +14,9 @@ body {
 
 /* Custom color variables - add these to your global CSS */
 :root {
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-500: #3b82f6;
+  --color-primary-600: lab(44.0605% 29.0279 -86.0352);
+  --color-primary-700: lab(36.9089% 35.0961 -85.6872);
+  --color-primary-500: lab(54.1736% 13.3369 -74.6839);
   
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
