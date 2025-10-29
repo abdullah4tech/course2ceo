@@ -305,7 +305,6 @@ const filteredCourses = computed(() => {
 </template>
 
 <style scoped>
-/* Shiny Text Effect */
 .shiny-text {
   background: linear-gradient(
     135deg,
@@ -329,7 +328,6 @@ const filteredCourses = computed(() => {
   100% { background-position: 200% center; }
 }
 
-/* Search Container */
 .search-container {
   position: relative;
   display: flex;
@@ -375,7 +373,6 @@ const filteredCourses = computed(() => {
     0 0 0 1px rgba(59, 130, 246, 0.2) inset;
 }
 
-/* Category Pills */
 .category-pill {
   display: inline-flex;
   align-items: center;
@@ -437,7 +434,6 @@ const filteredCourses = computed(() => {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Courses Grid */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -457,7 +453,6 @@ const filteredCourses = computed(() => {
   }
 }
 
-/* Empty State */
 .empty-state {
   padding: 48px 24px;
   background: rgba(255, 255, 255, 0.7);

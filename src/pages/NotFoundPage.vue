@@ -113,7 +113,6 @@ const goToCourses = () => {
 </template>
 
 <style scoped>
-/* Error Number Container */
 .error-container {
   position: relative;
   margin-bottom: 48px;
@@ -168,7 +167,6 @@ const goToCourses = () => {
   }
 }
 
-/* Floating Icons */
 .floating-icons {
   position: absolute;
   top: 0;
@@ -232,7 +230,6 @@ const goToCourses = () => {
   }
 }
 
-/* Content Card */
 .content-card {
   position: relative;
   padding: 48px 32px;
@@ -310,7 +307,6 @@ const goToCourses = () => {
   z-index: 1;
 }
 
-/* Suggestions */
 .suggestions {
   margin-bottom: 32px;
   position: relative;
@@ -364,7 +360,6 @@ const goToCourses = () => {
   flex-shrink: 0;
 }
 
-/* Action Buttons */
 .action-buttons {
   display: flex;
   flex-direction: column;

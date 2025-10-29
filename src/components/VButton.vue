@@ -115,7 +115,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
 </script>
 
 <style scoped>
-/* Premium Button Base Styles */
 .premium-button {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -123,7 +122,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
   font-weight: 600;
 }
 
-/* Glossy shine overlay */
 .button-shine {
   position: absolute;
   top: 0;
@@ -139,7 +137,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
   z-index: 1;
 }
 
-/* Primary Button - No hover scale, uses your blue color */
 .btn-primary {
   background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-700) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -153,7 +150,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
   transform: scale(0.98);
 }
 
-/* Glass Morphism Secondary */
 .btn-glass {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -171,7 +167,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 1px 2px 0 rgba(255, 255, 255, 0.7) inset;
 }
 
-/* Success Button - Uses your green color */
 .btn-success {
   background: linear-gradient(135deg, var(--color-success-500) 0%, var(--color-success-700) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -188,7 +183,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
-/* Warning Button - Uses your orange color */
 .btn-warning {
   background: linear-gradient(135deg, var(--color-warning-500) 0%, var(--color-warning-700) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -205,7 +199,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
-/* Danger Button - Uses your red color */
 .btn-danger {
   background: linear-gradient(135deg, var(--color-danger-500) 0%, var(--color-danger-700) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -222,7 +215,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
-/* Outline Glass Button */
 .btn-outline {
   background: rgba(255, 255, 255, 0.5);
   border: 2px solid rgba(100, 100, 100, 0.3);
@@ -239,7 +231,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 0 0 1px rgba(255, 255, 255, 0.3) inset;
 }
 
-/* Ghost Glass Button */
 .btn-ghost {
   background: transparent;
   border: 1px solid transparent;
@@ -253,7 +244,6 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
-/* Focus Ring - Uses primary color */
 .premium-button:focus-visible {
   outline: none;
   box-shadow: 
@@ -262,13 +252,11 @@ const isDisabled = computed(() => props.loading || props.disabled);
     0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
-/* Disabled State */
 .premium-button:disabled {
   cursor: not-allowed;
   filter: grayscale(0.5);
 }
 
-/* Smooth transitions */
 .premium-button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

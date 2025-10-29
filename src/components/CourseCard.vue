@@ -130,7 +130,6 @@ const levelColor = computed(() => {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* Thumbnail */
 .course-thumbnail {
   position: relative;
   width: 100%;
@@ -165,7 +164,6 @@ const levelColor = computed(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Content */
 .course-content {
   padding: 20px;
   display: flex;
