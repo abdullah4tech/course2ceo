@@ -3,39 +3,45 @@
     :class="buttonClasses"
     :disabled="isDisabled"
     :type="type"
+    @click="handleClick"
     v-bind="$attrs"
   >
-    <!-- Loading Spinner -->
-    <svg
-      v-if="loading"
-      class="w-4 h-4 mr-2 animate-spin"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        class="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-      <path
-        class="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      />
-    </svg>
+    <!-- Glossy overlay effect -->
+    <div class="button-shine"></div>
     
-    <!-- Button Content -->
-    <slot></slot>
+    <!-- Button Content Wrapper -->
+    <span class="relative z-10 inline-flex items-center gap-2">
+      <!-- Loading Spinner -->
+      <svg
+        v-if="loading"
+        class="w-4 h-4 animate-spin"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        />
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        />
+      </svg>
+      
+      <!-- Slot Content -->
+      <slot></slot>
+    </span>
   </button>
 </template>
 
 <script setup>
 import { computed, useAttrs } from 'vue';
 
-// Define props
 const props = defineProps({
   variant: {
     type: String,
@@ -62,33 +68,35 @@ const props = defineProps({
   }
 });
 
-// Define emits (optional, for better IDE support)
-defineEmits(['click']);
+const emit = defineEmits(['click']);
 
-// Get attrs for additional class handling
 const attrs = useAttrs();
 
-// Button variant configurations (similar to CVA)
-const buttonVariants = {
-  base: 'inline-flex items-center justify-center cursor-pointer rounded-lg font-medium transition-colors focus:outline-none focus:ring-4 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
-  variants: {
-    primary: 'bg-primary-600 hover:bg-red-500 text-white focus:ring-slate-300',
-    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-slate-300',
-    success: 'bg-success-600 text-white hover:bg-success-700 focus:ring-slate-300',
-    warning: 'bg-warning-600 text-white hover:bg-warning-700 focus:ring-slate-300',
-    danger: 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-slate-300',
-    outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-slate-300',
-    ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-slate-300',
-  },
-  sizes: {
-    sm: 'h-8 px-4 text-sm',
-    md: 'h-10 px-5 text-sm',
-    lg: 'h-12 px-8 text-base',
-    xl: 'h-14 px-10 text-lg',
+const handleClick = (event) => {
+  if (!props.loading && !props.disabled) {
+    emit('click', event);
   }
 };
 
-// Computed property for button classes
+const buttonVariants = {
+  base: 'premium-button inline-flex items-center justify-center cursor-pointer font-semibold transition-all duration-300 focus:outline-none disabled:opacity-40 disabled:pointer-events-none relative overflow-hidden',
+  variants: {
+    primary: 'btn-primary text-white shadow-2xl',
+    secondary: 'btn-glass text-gray-800 hover:scale-[1.02] active:scale-[0.98]',
+    success: 'btn-success text-white shadow-2xl hover:scale-[1.02] active:scale-[0.98]',
+    warning: 'btn-warning text-white shadow-2xl hover:scale-[1.02] active:scale-[0.98]',
+    danger: 'btn-danger text-white shadow-2xl hover:scale-[1.02] active:scale-[0.98]',
+    outline: 'btn-outline text-gray-700 hover:scale-[1.02] active:scale-[0.98]',
+    ghost: 'btn-ghost text-gray-700 hover:scale-[1.02] active:scale-[0.98]',
+  },
+  sizes: {
+    sm: 'h-9 px-5 text-sm rounded-xl',
+    md: 'h-11 px-6 text-base rounded-2xl',
+    lg: 'h-14 px-8 text-lg rounded-2xl',
+    xl: 'h-16 px-10 text-xl rounded-3xl',
+  }
+};
+
 const buttonClasses = computed(() => {
   const classes = [
     buttonVariants.base,
@@ -96,7 +104,6 @@ const buttonClasses = computed(() => {
     buttonVariants.sizes[props.size]
   ];
   
-  // Add any additional classes passed via class attribute
   if (attrs.class) {
     classes.push(attrs.class);
   }
@@ -104,26 +111,165 @@ const buttonClasses = computed(() => {
   return classes.join(' ');
 });
 
-// Computed property for disabled state
 const isDisabled = computed(() => props.loading || props.disabled);
 </script>
 
-
 <style scoped>
-/* Apply custom colors if not using Tailwind's default palette */
-.bg-primary-600 { background-color: var(--color-primary-600); }
-.bg-primary-700 { background-color: var(--color-primary-700); }
-.focus\:ring-primary-500:focus { --tw-ring-color: var(--color-primary-500); }
+/* Premium Button Base Styles */
+.premium-button {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
 
-.bg-success-600 { background-color: var(--color-success-600); }
-.bg-success-700 { background-color: var(--color-success-700); }
-.focus\:ring-success-500:focus { --tw-ring-color: var(--color-success-500); }
+/* Glossy shine overlay */
+.button-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
-.bg-warning-600 { background-color: var(--color-warning-600); }
-.bg-warning-700 { background-color: var(--color-warning-700); }
-.focus\:ring-warning-500:focus { --tw-ring-color: var(--color-warning-500); }
+/* Primary Button - No hover scale, uses your blue color */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-700) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 40px -10px color-mix(in srgb, var(--color-primary-600) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
+}
 
-.bg-danger-600 { background-color: var(--color-danger-600); }
-.bg-danger-700 { background-color: var(--color-danger-700); }
-.focus\:ring-danger-500:focus { --tw-ring-color: var(--color-danger-500); }
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Glass Morphism Secondary */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 12px 40px 0 rgba(31, 38, 135, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+/* Success Button - Uses your green color */
+.btn-success {
+  background: linear-gradient(135deg, var(--color-success-500) 0%, var(--color-success-700) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 40px -10px color-mix(in srgb, var(--color-success-600) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+.btn-success:hover {
+  box-shadow: 
+    0 15px 50px -10px color-mix(in srgb, var(--color-success-600) 70%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Warning Button - Uses your orange color */
+.btn-warning {
+  background: linear-gradient(135deg, var(--color-warning-500) 0%, var(--color-warning-700) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 40px -10px color-mix(in srgb, var(--color-warning-600) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+.btn-warning:hover {
+  box-shadow: 
+    0 15px 50px -10px color-mix(in srgb, var(--color-warning-600) 70%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Danger Button - Uses your red color */
+.btn-danger {
+  background: linear-gradient(135deg, var(--color-danger-500) 0%, var(--color-danger-700) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 40px -10px color-mix(in srgb, var(--color-danger-600) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+.btn-danger:hover {
+  box-shadow: 
+    0 15px 50px -10px color-mix(in srgb, var(--color-danger-600) 70%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Outline Glass Button */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(100, 100, 100, 0.3);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(100, 100, 100, 0.4);
+  box-shadow: 
+    0 12px 40px 0 rgba(31, 38, 135, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+/* Ghost Glass Button */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+/* Focus Ring - Uses primary color */
+.premium-button:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 4px color-mix(in srgb, var(--color-primary-500) 20%, transparent),
+    0 10px 40px -10px color-mix(in srgb, var(--color-primary-600) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Disabled State */
+.premium-button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* Smooth transitions */
+.premium-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 </style>
