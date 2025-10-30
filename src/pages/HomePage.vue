@@ -319,7 +319,7 @@ const handleVideoEnd = () => {
       </div>
 
       <!-- Footer -->
-      <div class="bg-gray-900 px-6 py-12 lg:px-8">
+      <div class="bg-gray-900 mt-auto px-6 py-12 lg:px-8">
         <div class="mx-auto max-w-7xl">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- Brand Column -->
