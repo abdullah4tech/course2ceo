@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import CourseCard from '../components/CourseCard.vue';
-import CourseHeader from '../components/CourseHeader.vue';
+import VInput from '../components/VInput.vue';
 
 const selectedCategory = ref('all');
 const searchQuery = ref('');
@@ -230,10 +230,7 @@ const filteredCourses = computed(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-    <!-- Header -->
-    <CourseHeader />
-    
+  <div class="bg-gradient-to-br from-slate-50 via-white to-blue-50">
     <!-- Hero Section -->
     <div class="relative pt-24 pb-12 sm:pt-32 sm:pb-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -248,17 +245,19 @@ const filteredCourses = computed(() => {
         
         <!-- Search Bar -->
         <div class="mt-8 max-w-2xl mx-auto">
-          <div class="search-container">
-            <svg class="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              v-model="searchQuery"
-              type="text"
-              placeholder="Search courses..."
-              class="search-input"
-            />
-          </div>
+          <VInput
+            v-model="searchQuery"
+            type="text"
+            placeholder="Search courses..."
+            size="lg"
+            variant="glass"
+          >
+            <template #icon>
+              <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </template>
+          </VInput>
         </div>
       </div>
     </div>
@@ -326,51 +325,6 @@ const filteredCourses = computed(() => {
 @keyframes shine {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
-}
-
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 16px;
-  height: 20px;
-  width: 20px;
-  color: #9ca3af;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.search-input {
-  width: 100%;
-  padding: 14px 16px 14px 48px;
-  font-size: 1rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  transition: all 0.3s ease;
-  color: #1f2937;
-}
-
-.search-input::placeholder {
-  color: #9ca3af;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--color-primary-500);
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 12px 40px rgba(59, 130, 246, 0.15),
-    0 0 0 1px rgba(59, 130, 246, 0.2) inset;
 }
 
 .category-pill {
